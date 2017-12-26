@@ -1,13 +1,21 @@
 import {
     APP_CLEAR_ERRS,
     APP_INIT_SUCCESS,
-    APP_INIT_FAILURE
+    APP_INIT_FAILURE,
+    CURRENCIES_LOAD_REQUEST,
+    CURRENCIES_LOAD_SUCCESS,
+    CURRENCIES_LOAD_FAILURE
 } from '../actions/app'
 
 const initState = {
     isLoading: true,
+    token: null,
+    me: null,
+    loaded: [],
+    roles: [],
     err: null
 }
+
 
 export default function app(state = initState, action) {
 
@@ -31,6 +39,12 @@ export default function app(state = initState, action) {
             isLoading: false,
             err: action.err
         }
+    
+    case CURRENCIES_LOAD_SUCCESS:
+        return Object.assign({}, state, {loaded: action.data})
+
+    case CURRENCIES_LOAD_FAILURE:
+        return Object.assign({}, state, {loaded: action.data})
 
     default:
         return state

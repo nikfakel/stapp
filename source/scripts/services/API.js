@@ -23,10 +23,10 @@ export default class API {
         }
 
         return fetch(`${CONFIG.API_ROOT}/${endpoint}`, options).then((response) => {
-
-            if (response.status === 204) {
-                return null
-            }
+            console.log(response)
+            // if (response.status === 204) {
+            //     return null
+            // }
 
             if (method == 'DELETE') {
                 return response.status
